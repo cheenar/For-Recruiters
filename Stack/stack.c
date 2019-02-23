@@ -12,6 +12,7 @@ void resize(Stack *stack) {
   if (stack->size == stack->capacity) {
     stack->capacity *= 2;
     realloc(stack->data, sizeof(Stack) * stack->capacity);
+    printf("Resized: %d\n", stack->size);
   }
 }
 
