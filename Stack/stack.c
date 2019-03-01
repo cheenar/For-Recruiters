@@ -11,8 +11,7 @@ Stack *init_stack() {
 void resize(Stack *stack) {
   if (stack->size == stack->capacity) {
     stack->capacity *= 2;
-    realloc(stack->data, sizeof(Stack) * stack->capacity);
-    printf("Resized: %d\n", stack->size);
+    void *ptr = realloc(stack->data, sizeof(Stack) * stack->capacity);
   }
 }
 
@@ -34,14 +33,15 @@ StackData *pop(Stack *stack) {
 int main(void) {
  Stack *s = init_stack();
 
- StackData *d1;
+ StackData *d1 = malloc(sizeof(StackData));
  d1->string = "Exxon Mobil";
 
- StackData *d2;
+ StackData *d2 = malloc(sizeof(StackData));
  d2->integer = 123;
-
+ 
  push(s, d1);
  push(s, d2);
  printf("%d\n", pop(s)->integer);
  printf("%s\n", pop(s)->string);
 }
+
