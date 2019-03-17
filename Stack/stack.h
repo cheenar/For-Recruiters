@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define DEFAULT_CAPACITY 2
+
 typedef struct stack {
   void **data;
-  size_t type_size;
   int size;
   int capacity;
 } Stack;
