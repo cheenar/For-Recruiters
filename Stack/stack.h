@@ -1,20 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef union stack_data {
-  int integer;
-  char character;
-  char *string;
-  double doub;
-} StackData;
-
 typedef struct stack {
-  StackData **data;
+  void **data;
+  size_t type_size;
   int size;
   int capacity;
 } Stack;
 
 Stack* init_stack();
 void resize(Stack *stack);
-void push(Stack *stack, StackData *s_data);
-StackData *pop(Stack *stack);
+void push(Stack *stack, void *ptr);
+void *pop(Stack *stack);
